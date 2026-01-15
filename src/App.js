@@ -1,22 +1,14 @@
-import logo from './logo.svg';
+import A from './components/a';
+import B from './components/b';
+import SchemaRender from './sdks/schemaRender';
+import mocksSchema from './constants/mocksSchema';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <SchemaRender schema={mocksSchema} components={{A, B}} />
       </header>
     </div>
   );
