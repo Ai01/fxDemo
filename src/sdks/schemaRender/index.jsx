@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { runExpression } from '../expression/runExpression';
+import SchemaStore from '../store';
 
 const SchemaRender = (props) => {
     const { schema, components } = props;
+    const store = new SchemaStore(schema);
+
     return (
         <div>
             {schema.map((item) => {
@@ -14,7 +17,7 @@ const SchemaRender = (props) => {
                 for (const key in componentProps) {
                     const value = componentProps[key];
                     if (typeof value === 'object' && value.type === 'expression') {
-                        processedProps[key] = runExpression(value.expression, {});
+                        processedProps[key] = runExpression(value.expression, {getValue: store.getValue});
                     } else {
                         processedProps[key] = value;
                     }

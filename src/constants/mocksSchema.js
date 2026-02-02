@@ -4,6 +4,7 @@ const mocksSchema = [
     key: 'a1',
     componentProps: {
       name: "a-mock-name",
+      value: 1,
     },
   },
   {
@@ -13,8 +14,9 @@ const mocksSchema = [
       name: "b-mock-name",
       message: {
         type: "expression",
-        expression: "1 + 2"
-      }
+        expression: "(() => {var a = getValue('a1') + getValue('b1'); console.log(a, getValue('a1')); return a;})(); "
+      },
+      value: 2 
     },
   },
   {
