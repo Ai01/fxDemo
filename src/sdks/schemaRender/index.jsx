@@ -1,23 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { observer } from "mobx-react"
 import { runExpression } from '../expression/runExpression';
-import SchemaStore from '../store';
 
-const SchemaRender = (props) => {
-    const { schema, components } = props;
-    const store = new SchemaStore(schema);
+const SchemaRender = observer((props) => {
+    const { schema, components, store } = props;
+
+    useEffect(() => {
+        setTimeout(() => {
+            store.setValue('a1', 5);
+        }, 1000);
+    }, []);
 
     return (
         <div>
             {schema.map((item) => {
                 const { componentName, componentProps } = item;
-                const RealComponent = components[componentName]
+                const RealComponent = components[componentName];
 
                 // componentProps 的属性 如果是对象，并且类型为 expression， 那么要用 expression处理
                 const processedProps = {};
                 for (const key in componentProps) {
                     const value = componentProps[key];
                     if (typeof value === 'object' && value.type === 'expression') {
-                        processedProps[key] = runExpression(value.expression, {getValue: store.getValue});
+                        processedProps[key] = runExpression(value.expression, { getValue: store.getValue });
                     } else {
                         processedProps[key] = value;
                     }
@@ -31,6 +36,6 @@ const SchemaRender = (props) => {
             })}
         </div>
     );
-};
+});
 
 export default SchemaRender;
