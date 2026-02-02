@@ -1,12 +1,14 @@
 const mocksSchema = [
   {
     componentName: "A",
+    key: 'a1',
     componentProps: {
       name: "a-mock-name",
     },
   },
   {
     componentName: "B",
+    key: 'b1',
     componentProps: {
       name: "b-mock-name",
       message: {
@@ -17,14 +19,16 @@ const mocksSchema = [
   },
   {
     componentName: "A",
+    key: 'a2',
     componentProps: {
-      name: "a-mock-name",
+      name: "a2-mock-name",
     },
   },
   {
     componentName: "B",
+    key: 'b2',
     componentProps: {
-      name: "b-mock-name",
+      name: "b2-mock-name",
     },
   },
 ];
