@@ -9,6 +9,15 @@ const SchemaRender = observer((props) => {
         setTimeout(() => {
             store.setValue('a1', 5);
         }, 1000);
+        setTimeout(() => {
+            store.setValue('b1', 6);
+        }, 2000);
+        setTimeout(() => {
+            store.setValue('b2', store.getValue('a2') + 2);
+        }, 3000);
+        setTimeout(() => {
+            store.setValue('a2', 2);
+        }, 4000);
     }, []);
 
     return (
