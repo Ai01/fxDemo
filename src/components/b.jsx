@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 const B = (props) => {
-  const { name } = props;
+  const { name, message } = props;
   return (
-    <div>{name || 'b'}</div>
+    <div>{`${name || 'b'} say ${message || ''}`}</div>
   );
 };
 
